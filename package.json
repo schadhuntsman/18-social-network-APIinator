@@ -1,0 +1,27 @@
+{
+  "name": "18-nosql",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JUST BACK END",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schadhuntsman/social-network-APIinator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/schadhuntsman/social-network-APIinator/issues"
+  },
+  "homepage": "https://github.com/schadhuntsman/social-network-APIinator#readme"
+}

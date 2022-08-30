@@ -17,3 +17,15 @@ const UserSchema = new Schema({
         type: []
     },
 })
+
+// thoughts: [
+//     {
+//       type: String,
+//     }
+//   ]
+
+
+  //create the user model using the schema
+const User = model('User', UserSchema)
+
+  module.exports = User;

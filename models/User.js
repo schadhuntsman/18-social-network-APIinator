@@ -2,20 +2,29 @@ const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
     username: {
-        type: string
+        type: string,
+        unique: true,
+        required: true,
+        trimmed: true
+
     },
     email: {
         type: string,
-        validate: {
-            //match email
-        }
-    },
-    thouhghts: {
+        required: true,
+        unique: true,
+        match: true
+        },
+    
+    thoughts: {
         type: []
     },
     friends: {
         type: []
     },
+    toJSON: {
+        virtuals: true,
+        getters: true
+    }
 })
 
 // thoughts: [

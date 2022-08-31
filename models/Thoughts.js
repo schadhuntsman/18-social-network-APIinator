@@ -1,16 +1,22 @@
 const { Schema, model } = require('mongoose');
 
+
 const ThoughtsSchema = new Schema({
    
     thoughtText: {
-        type: string
+        type: string,
+        required: true,
+        minLength: 1,
+        maxLenth: 280
     },
     createdAt: {
         type: Date,
-        default:Date.now
+        default:Date.now,
+        get: (createdAtVal) => dateFormat(createdAtVal)
     },
     username: {
-        type: string
+        type: string,
+        required: true
     },
     reactions: {
         type: [],
@@ -36,6 +42,12 @@ thoughts: [
     return this.thoughts.length;
   });
 
-const Thought = model('Thought', ThoughtsSchema);
+//set date default value to current timestamp on query schema settings
+ThoughtsSchema.virtual('Date').get(function() {  
+    return (createdAtVal) => dateFormat(createdAtVal) 
+});
+
+
+const Thoughts = model('Thoughts', ThoughtsSchema);
 
 module.exports = 'Thoughts'

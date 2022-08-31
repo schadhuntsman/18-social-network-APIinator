@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const {Schema, model, Types } = require('mongoose');
+const dateFormat = require('../models/Thoughts.js');
 
 
 const ThoughtsSchema = new Schema({
@@ -19,7 +20,7 @@ const ThoughtsSchema = new Schema({
         required: true
     },
     reactions: {
-        type: [],
+        type: [ReactionSchema],
     },
 
 thoughts: [
@@ -43,7 +44,7 @@ thoughts: [
   });
 
 //set date default value to current timestamp on query schema settings
-ThoughtsSchema.virtual('Date').get(function() {  
+ThoughtsSchema.virtual('date').get(function() {  
     return (createdAtVal) => dateFormat(createdAtVal) 
 });
 

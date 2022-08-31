@@ -1,10 +1,14 @@
 //reaction schema
-const {Schema, model } = require('mongoose');
-const Date = require('../models/Thoughts');
+const {Schema, model, Types } = require('mongoose');
+const dateFormat = require('../models/Thoughts.js');
+
 
 const ReactionSchema = new Schema({
 
-    reactionId: mongoose.ObjectId,
+    reactionId: {
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId()
+    },
     
     reactionBody: {
         type: string,
@@ -17,9 +21,13 @@ const ReactionSchema = new Schema({
         createdAt: Date.now,
         get: (createdAtVal) => dateFormat(createdAtVal)
     },
+},
+    {
+        toJSON: {
+            getters: true
+        }
+    }
 
+)
 
-    
-
-
-})
+ReactionSchema();

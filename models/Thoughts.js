@@ -33,15 +33,20 @@ thoughts: [
 {
     toJSON: {
         virtuals: true,
+        getters: true
     },
     id: false
   }
 );
 
-  //get total count of thoughts on retrieval
-  ThoughtsSchema.virtual('thoughtCount').get(function() {
-    return this.thoughts.length;
-  });
+//   //get total count of thoughts on retrieval
+//   ThoughtsSchema.virtual('thoughtCount').get(function() {
+//     return this.thoughts.length;
+//   });
+
+UserSchema.virtual('thoughtCount').get(function() {
+    return this.thoughts.reduce((total, thoughts) => total + thoughts.reactions.length + 1, 0);
+});
 
 //set date default value to current timestamp on query schema settings
 ThoughtsSchema.virtual('date').get(function() {  

@@ -17,7 +17,8 @@ const ThoughtsSchema = new Schema({
     },
     username: {
         type: string,
-        required: true
+        required: "You need to provide a username!",
+        trim: true
     },
     reactions: {
         type: [ReactionSchema],

@@ -42,9 +42,9 @@ getUserById({ params }, res) {
     .then(dbUserData => res.json(dbUserData))
     .catch(err => res.status(404).json(err));
  },
-
+//update user by id
  updateUser({ params}, res) {
-    User.findOneAndUpdate({ _id: params.id }, body, { new: true })
+    User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
     .then(dbUserData => {
         if(!dbUserData) {
             res.status(404).json({ message: 'no user found with this id' });

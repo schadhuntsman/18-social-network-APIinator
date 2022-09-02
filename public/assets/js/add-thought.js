@@ -1,13 +1,17 @@
-function handleNewThoughtSubmit(event) {
+function getThought() {
   event.preventDefault();
 
+    // const username = $newThoughtForm.querySelector('#thought-name').value;
     const thoughtText = $newThoughtForm.querySelector('#thought').value;
     const username = $newThoughtForm.querySelector('#username').value;
+    map(thoughtText => {
+      return thoughtText.value;
+    });
 
-    if (!thoughtText || username)
-    return false;
+    if (!thought || username || thought.length)
+    return;
 
-    const formData = { thoughtText, username };
+    const formData = { thought,  username, thoughtText };
 
     fetch(`/api/${thought-routes}`, {
       method: 'POST',
@@ -29,13 +33,14 @@ function handleNewThoughtSubmit(event) {
     })
     .catch(err => {
       console.log(err);
+      saveRecord(formData);
     })
 }
 
 function handleNewReaction(event) {
   event.preventDefault;
 
-  if(!event.target.matches('.reply-form')) {
+  if(!event.target.matches('.reaction-form')) {
     return false;
   }
 
@@ -52,26 +57,24 @@ const thoughtId = event.target.getAttribute('data-thoughtid');
 
     fetch(`/api/comments/${userId}/{${thoughtId}`, {
       method: 'PUT',
+      headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
     },
     body: JSON.stringify(formData)
-    )}
-    .then(response => {
-      if(!response.ok) {
-        throw new Error('Something went wrong!');
-      }
-      response.json();
-    })
-    .then(thoughtResponse => {
-      console.log(thoughtResponse);
-      locatoin.reload();
-    })
-    .catch(err => {
-      console.log(err);
+  })
+    .then(response => { 
+    if (!response.ok) {
+      throw new Error('Something went wrong!');
+    }
+    response.json();
+  })
+  .catch(err => {
+    console.log(err);
     })
 
     handleNewReaction();
+    getThought();
 
     
 

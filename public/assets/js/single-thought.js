@@ -3,6 +3,18 @@ function getThought() {
     const thoughtId = searchParams.get('id');   
     
     //get thought info
+    // fetch(`/api/comments/${userId}/{${thoughtId}`, {
+    //     method: 'PUT',
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(formData)
+    // })
+    //   .then(response => response.json()) 
+    //   .then(postReaction => {
+    //     console.log(postReaction);
+    //   })
+   
     fetch(`/api/thought-routes/${thoughtId}`)
     .then(response => {
         //check for a 4xx or 5xx error from server

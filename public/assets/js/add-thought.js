@@ -1,19 +1,22 @@
-function getThought() {
-  event.preventDefault();
-
+// function getThought() {
+//   event.preventDefault();
+    const handleThoughtSubmit = event => {
+      event.preventDefault();
+    
     // const username = $newThoughtForm.querySelector('#thought-name').value;
-    const thoughtText = $newThoughtForm.querySelector('#thought').value;
+    const thought = $newThoughtForm.querySelector('#thought').value;
     const username = $newThoughtForm.querySelector('#username').value;
+    const thoughtText = $newThoughtForm.querySelector('#thought').value;
     map(thoughtText => {
       return thoughtText.value;
     });
 
-    if (!thought || username || thought.length)
+    if (!thought || username || thoughtText.length)
     return;
 
     const formData = { thought,  username, thoughtText };
 
-    fetch(`/api/${thought-routes}`, {
+    fetch(`/api/thought-routes`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -27,10 +30,11 @@ function getThought() {
       }
       response.json();
     })
-    .then(thoughtResponse => {
-      console.log(thoughtResponse);
-      locatoin.reload();
+    then(response => response.json())
+    .then(postResponse => {
+      console.log(postResponse);
     })
+      
     .catch(err => {
       console.log(err);
       saveRecord(formData);

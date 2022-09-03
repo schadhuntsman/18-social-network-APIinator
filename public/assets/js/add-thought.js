@@ -76,7 +76,8 @@ const thoughtId = event.target.getAttribute('data-thoughtid');
   .catch(err => {
     console.log(err);
     })
-
+  }
+  
     handleNewReaction();
     getThought();
 

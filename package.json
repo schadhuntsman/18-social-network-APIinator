@@ -4,7 +4,6 @@
   "private": true,
   "description": "JUST BACK END",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon server.js"
   },

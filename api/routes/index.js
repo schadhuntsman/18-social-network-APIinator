@@ -2,7 +2,7 @@
 const userRoutes = require('./user-routes');
 const apiRoutes = require('./api');
 const thoughtsRoutes = require('./routes/thought-routes');
-const userRoutes = require('./routes/user-routes');
+// const userRoutes = require('./routes/user-routes');
 
 
 //add prefix of to routes created in pizzaroutes

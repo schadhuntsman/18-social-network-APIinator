@@ -11,16 +11,22 @@ const ReactionSchema = new Schema({
     },
     
     reactionBody: {
-        type: string,
+        type: String,
         required: true,
         maxLength: 280,
         trim: true
     },
     username: {
-        type: string,
+        type: String,
         required: true,
         createdAt: Date.now,
         get: (createdAtVal) => dateFormat(createdAtVal)
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (createdAtVal) => dateFormat
+        (createdAtVal),
     },
 },
     {
@@ -30,7 +36,7 @@ const ReactionSchema = new Schema({
     }
 
 )
-ReactionSchema.virtual('reactionCount').get(function() {
+ReactionSchema.virtual('reactionCount', function() {
     return this.reaction.length;
 });
 

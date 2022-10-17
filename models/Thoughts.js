@@ -1,6 +1,3 @@
-const {Schema, model, Types } = require('mongoose');
-const dateFormat = require('../models/Thoughts.js');
-
 //reaction schema
 const {Schema, model, Types } = require('mongoose');
 const dateFormat = require('../models/Thoughts.js');
@@ -40,9 +37,6 @@ const ReactionSchema = new Schema({
 
 )
 
-
-ReactionSchema();
-
 const ThoughtsSchema = new Schema({
    
     thoughtText: {
@@ -64,30 +58,21 @@ const ThoughtsSchema = new Schema({
     reactions: {
         type: [ReactionSchema],
     },
+},
   {
     toJSON: {
         virtuals: true,
-        getters: true
+        getters: true,
     },
-    id: false
+    id: false,
   }
 );
 
 //   //get total count of thoughts on retrieval
-//   ThoughtsSchema.virtual('thoughtCount').get(function() {
-//     return this.thoughts.length;
-//   });
-
-UserSchema.virtual('thoughtCount').get(function() {
-    return this.thoughts.reduce((total, thoughts) => total + thoughts.reactions.length + 1, 0);
-});
-
-//set date default value to current timestamp on query schema settings
-ReactionSchema.virtual('reactionCount', function() {
-    return this.reaction.length;
-});
-
+ThoughtsSchema.virtual('ReactionCount', function() {
+    return this.reactions.length;
+  });
 
 const Thoughts = model('Thoughts', ThoughtsSchema);
 
-module.exports = 'Thoughts'
+module.exports = Thoughts

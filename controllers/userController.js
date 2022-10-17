@@ -1,4 +1,4 @@
-const { User } = require("../models/Recipes")
+const { User } = require("../models")
 
 const userController = {
     //get all users
@@ -111,3 +111,4 @@ getUserById({ params }, res) {
   },
 };
 
+module.exports = userController

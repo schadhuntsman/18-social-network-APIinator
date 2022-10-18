@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/recipe-hu
 
 mongoose.set('debug', true);
 
-app.use(require('./api/routes'));
+app.use(require('./routes'));
 
 app.listen(port, () => {
     console.log(`${port}`)

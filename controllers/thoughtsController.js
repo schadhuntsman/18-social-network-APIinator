@@ -91,21 +91,21 @@ const thoughtsController = {
         })
         .catch(err => res.json(err));
     },
-    removeThought({ params }, res) {
-        Thoughts.findOneAndDelete({ _id: params.id })
-          .then((dbThoughtData) => {
-            if (!dbThoughtData) {
-              res.status(404).json({ message: "No thought found with this id" });
-              return;
+    removeReaction({ params }, res) {
+        Thoughts.findOneAndUpdate({ _id: params.thoughtId },
+          { $push: { reaction: body } },
+        { new: true, runValidators: true })
+        .then(dbThoughtData => {
+            if(!dbThoughtData) {
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
             }
             res.json(dbThoughtData);
-          })
-          .catch((err) => res.json(err));
-      },
+        })
+        .catch(err => res.json(err));
+    },
 };
 
     
-
-
 
 module.exports = thoughtsController;

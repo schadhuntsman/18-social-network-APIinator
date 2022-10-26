@@ -36,8 +36,8 @@ getUserById({ params }, res) {
         res.status(400).json(err);
     });
 },
-
- createUser({ body }, res) {
+//create user
+ createUser({ params, body }, res) {
     User.create(body)
     .then(dbUserData => res.json(dbUserData))
     .catch(err => res.status(404).json(err));

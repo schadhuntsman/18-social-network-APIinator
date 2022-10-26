@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3010;
 
 app.get('/', (req, res) => {
     res.send('herro testing world')
@@ -21,8 +21,8 @@ mongoose.set('debug', true);
 
 app.use(require('./routes'));
 
-app.listen(port, () => {
-    console.log(`${port}`)
+app.listen(PORT, () => {
+    console.log(`${PORT}`)
 })
 
 app.listen(PORT, () => console.log(`Connected on localhost:${PORT}`));

@@ -26,16 +26,18 @@ const ReactionSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (createdAtVal) => dateFormat
-        (createdAtVal),
-    },
+        (createdAtVal)
+    }
 },
     {
         toJSON: {
+            virtuals: true,
             getters: true
-        }
+        },
+        id: false
     }
 
-)
+);
 
 const ThoughtsSchema = new Schema({
    
@@ -43,28 +45,27 @@ const ThoughtsSchema = new Schema({
         type: String,
         required: true,
         minLength: 1,
-        maxLenth: 280,
+        maxLenth: 280
     },
     createdAt: {
         type: Date,
         default:Date.now,
-        get: (createdAtVal) => dateFormat(createdAtVal),
+        get: (createdAtVal) => dateFormat(createdAtVal)
     },
     username: {
         type: String,
         required: "You need to provide a username!",
-        trim: true,
+        trim: true
     },
-    reactions: {
-        type: [ReactionSchema],
-    },
+    reactions: [ReactionSchema]
 },
+
   {
     toJSON: {
         virtuals: true,
-        getters: true,
+        getters: true
     },
-    id: false,
+    id: false
   }
 );
 

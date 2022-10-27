@@ -30,7 +30,7 @@ Must match a valid email address (look into Mongoose's matching validation)
 
 thoughts
 
-Array of _id values referencing the Thought model
+Array of _id values referencing the Thoughts model
 
 friends
 
@@ -40,9 +40,9 @@ Schema Settings
 
 Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
 
-Thought
+Thoughts
 
-thoughtText
+thoughttext
 
 String
 Required
@@ -91,7 +91,7 @@ Set default value to the current timestamp
 Use a getter method to format the timestamp on query
 Schema Settings
 
-This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
+This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thoughts model.
 
 API Routes
 /api/users
@@ -129,7 +129,7 @@ POST to create a new thought (don't forget to push the created thought's _id to 
 
 // example data
 {
-  "thoughtText": "Here's a cool thought...",
+  "thoughttext": "Here's a cool thought...",
   "username": "lernantino",
   "userId": "5edff358a0fcb779aa7b118b"
 }

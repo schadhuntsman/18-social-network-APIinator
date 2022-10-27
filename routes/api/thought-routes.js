@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { 
     getAllThoughts,
-    addThought,
-    getThoughtById,
-    removeThought,
-    updateThought,
+    addThoughts,
+    getThoughtsById,
+    removeThoughts,
+    updateThoughts,
     addReaction,
     removeReaction,
     } = require('../../controllers/thoughtController');
@@ -12,15 +12,15 @@ const {
 //api/thoughts/<userId>
 router.route('/')
 .get(getAllThoughts)
-.post(addThought);
+.post(addThoughts);
 
 
 //api/thoughts/<userId>/<thoughtId>
 router
 .route('/:id')
-.get(getThoughtById)
-.put(updateThought)
-.delete(removeThought);
+.get(getThoughtsById)
+.put(updateThoughts)
+.delete(removeThoughts);
 
 router.route('/:thoughtId/reaction').post(addReaction)
 router.route('/:thoughtId/:reactionId').delete(removeReaction);

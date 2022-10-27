@@ -12,10 +12,9 @@ const {
 
 //set up get and post for api/user
 
-router
-    .route('/')
-    .get(getAllUsers)
-    .post(createUser);
+router.route('/')
+.get(getAllUsers)
+.post(createUser);
 
     //set up GET one put and delete at api pizza id
 
